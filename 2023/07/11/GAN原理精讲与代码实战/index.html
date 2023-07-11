@@ -9,7 +9,7 @@
     
     <title>
         
-            Hexo上传教程 |
+            GAN原理精讲与代码实战 |
         
         Jamin&#39;s Blog
     </title>
@@ -168,7 +168,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Hexo上传教程</span>
+            <span class="title-hover-animation">GAN原理精讲与代码实战</span>
         </div>
 
         
@@ -187,10 +187,40 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2023-07-10 16:09:00</span>
-        <span class="mobile">2023-07-10 16:09</span>
+        <span class="pc">2023-07-11 15:59:00</span>
+        <span class="mobile">2023-07-11 15:59</span>
     </span>
     
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/AI/">AI</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/AI/DL/">DL</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/GNN/">GNN</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA/">数据增强</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
 
     
@@ -209,13 +239,18 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="Hexo上传教程"><a href="#Hexo上传教程" class="headerlink" title="Hexo上传教程"></a>Hexo上传教程</h1><h2 id="1、准备上传文件"><a href="#1、准备上传文件" class="headerlink" title="1、准备上传文件"></a>1、准备上传文件</h2><p>​	将要上传的文件放入source文件夹下的_posts文件夹下。</p>
-<h2 id="2、生成静态文件"><a href="#2、生成静态文件" class="headerlink" title="2、生成静态文件"></a>2、生成静态文件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-
-<h2 id="3、本地预览"><a href="#3、本地预览" class="headerlink" title="3、本地预览"></a>3、本地预览</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<h2 id="4、部署（同步）到Github"><a href="#4、部署（同步）到Github" class="headerlink" title="4、部署（同步）到Github"></a>4、部署（同步）到Github</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
+            <h1 id="零、GAN原理精讲与代码实战"><a href="#零、GAN原理精讲与代码实战" class="headerlink" title="零、GAN原理精讲与代码实战"></a>零、GAN原理精讲与代码实战</h1><h1 id="一、GAN原理和结构"><a href="#一、GAN原理和结构" class="headerlink" title="一、GAN原理和结构"></a>一、GAN原理和结构</h1><h2 id="1、什么是GAN"><a href="#1、什么是GAN" class="headerlink" title="1、什么是GAN"></a>1、什么是GAN</h2><p>​		生成对抗网络（Generative Adversarial Networks，简称GAN）是当前人工智能学界最为重要的研究热点之一。其突出的生成对抗能力不仅可用于生成各类图像和自然语言数据，还启发和推动了各类半监督学习和无监督学习任务的发展。</p>
+<p>​		GAN是一种深度神经网络架构，由一个生成网络和一个判别网络组成。生成网络产生“假”数据，并试图图欺骗判别网络;判别网络对生成数据进行真伪鉴别，试图正确识别所有”假”数据。在训练迭代的过程中，两个网络持续地进化和对抗,直到达到平衡状态(参考纳什均衡)，判别网络无法再识别“假”数据，训练结束。</p>
+<h2 id="2、GAN原理"><a href="#2、GAN原理" class="headerlink" title="2、GAN原理"></a>2、GAN原理</h2><p>​		GAN模型主要包括了两个部分:</p>
+<p>​		生成模型(Generative Model)和判别模型(Discriminative Model) ,也常叫做生成器(generator<br>与判别器(discriminator)。</p>
+<h3 id="生成模型（生成器）"><a href="#生成模型（生成器）" class="headerlink" title="生成模型（生成器）"></a>生成模型（生成器）</h3><p>​		生成器主要用来学习真实图像分布从而让自身生成的图像更加真实，以骗过判别器。</p>
+<h3 id="判别模型（判别器）"><a href="#判别模型（判别器）" class="headerlink" title="判别模型（判别器）"></a>判别模型（判别器）</h3><p>​		判别器则需要对接收的图片进行真假判别。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>​		在训练过程中，生成器努力地让生成的图像更加真实,而判别器则努力地去识别出图像的真假，这个过程相当于一个二人博弈，随着时间的推移，生成器和判别器在不断地进行对抗。</p>
+<p>​		最终两个网络达到了一个动态均衡:生成器生成的图像接近于真实图像分布，而判别器识别不出真假图像,对于给定图像的预测为真的概率基本接近0.5(相当于随机猜测尖别)。</p>
+<h2 id="3、GAN模型结构"><a href="#3、GAN模型结构" class="headerlink" title="3、GAN模型结构"></a>3、GAN模型结构</h2><p>​	模型结构如下图所示：</p>
+<p><img src="https://cdn.staticaly.com/gh/Jamin6/picx-images-hosting@master/image-20230711154035884.y0eztbee9m8.webp" alt="image-20230711154035884"></p>
+<h2 id="4、损失函数"><a href="#4、损失函数" class="headerlink" title="4、损失函数"></a>4、损失函数</h2><p>​		GAN设计的关键在于损失函数的处理。对于判别模型，损失函数是容易定义的，判别器主要用来判断一张图片是真实的还是生成的，显然这是一个二分类问题。对于生成模型，损失函数的定义就不是那么容易。我们希望生成器可以生成接近真实的图片，对于生成的图片是否像真实的，我们人类肉眼容易判断，但具体到代码中，往往是一个抽象的，难以数学公理化定义的范式。</p>
+<p>​		针对这个问题，我们不妨把生成模型的输出，交给判别模型处理，让判别器来判断这是一个真实的图像还是假的图像，因为深度学习模型很适合做图片的分类。这样就将生成对抗网络中的两大类模型生成器与判别器紧密地联合在了一起。</p>
 
         </div>
 
@@ -223,11 +258,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：Hexo上传教程</li>
+        <li>Post title：GAN原理精讲与代码实战</li>
         <li>Post author：Jamin</li>
-        <li>Create time：2023-07-10 16:09:00</li>
+        <li>Create time：2023-07-11 15:59:00</li>
         <li>
-            Post link：https://jamin6.github.io/2023/07/10/Hexo上传教程/
+            Post link：https://jamin6.github.io/2023/07/11/GAN原理精讲与代码实战/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -239,33 +274,30 @@
         
 
         
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/GNN/">#GNN</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA/">#数据增强</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
 
         
             <div class="article-nav">
-                
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2023/07/11/GAN%E5%8E%9F%E7%90%86%E7%B2%BE%E8%AE%B2%E4%B8%8E%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">GAN原理精讲与代码实战</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
                 
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/06/05/hello-world/"
+                           href="/2023/07/10/Hexo%E4%B8%8A%E4%BC%A0%E6%95%99%E7%A8%8B/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">[object Object]</span>
+                                <span class="post-nav-title-item">Hexo上传教程</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -474,7 +506,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo%E4%B8%8A%E4%BC%A0%E6%95%99%E7%A8%8B"><span class="nav-text">Hexo上传教程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E5%87%86%E5%A4%87%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6"><span class="nav-text">1、准备上传文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6"><span class="nav-text">2、生成静态文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88"><span class="nav-text">3、本地预览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E9%83%A8%E7%BD%B2%EF%BC%88%E5%90%8C%E6%AD%A5%EF%BC%89%E5%88%B0Github"><span class="nav-text">4、部署（同步）到Github</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9B%B6%E3%80%81GAN%E5%8E%9F%E7%90%86%E7%B2%BE%E8%AE%B2%E4%B8%8E%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98"><span class="nav-text">零、GAN原理精讲与代码实战</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81GAN%E5%8E%9F%E7%90%86%E5%92%8C%E7%BB%93%E6%9E%84"><span class="nav-text">一、GAN原理和结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AFGAN"><span class="nav-text">1、什么是GAN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81GAN%E5%8E%9F%E7%90%86"><span class="nav-text">2、GAN原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%EF%BC%88%E7%94%9F%E6%88%90%E5%99%A8%EF%BC%89"><span class="nav-text">生成模型（生成器）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A4%E5%88%AB%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%88%A4%E5%88%AB%E5%99%A8%EF%BC%89"><span class="nav-text">判别模型（判别器）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-text">原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81GAN%E6%A8%A1%E5%9E%8B%E7%BB%93%E6%9E%84"><span class="nav-text">3、GAN模型结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-text">4、损失函数</span></a></li></ol></li></ol>
     </div>
 </div>
         </aside>
