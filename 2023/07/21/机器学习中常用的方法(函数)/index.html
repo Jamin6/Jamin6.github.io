@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Jamin">
+    
+    <title>
+        
+            机器学习中常用的方法(函数) |
+        
+        Jamin&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/jamin6/css/style.css">
+
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/Jamin6/image-hosting@main/image/1654439492406.7kyiyyuijls0.webp">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"jamin6.gitee.io","root":"/jamin6/","language":"zh-CN","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"https://cdn.jsdelivr.net/gh/Jamin6/image-hosting@main/image/header.6rjn80v6u3o0.webp","favicon":"https://cdn.jsdelivr.net/gh/Jamin6/image-hosting@main/image/1654439492406.7kyiyyuijls0.webp","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"https://gitee.com/jamin6/picgo/raw/master/images/bg.svg","description":"别人的话只能作为一种参考，是不能左右自己的。"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Jamin&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/jamin6/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/jamin6/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/jamin6/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/jamin6/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/jamin6/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/jamin6/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/jamin6/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/jamin6/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/jamin6/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/jamin6/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">机器学习中常用的方法(函数)</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://cdn.jsdelivr.net/gh/Jamin6/image-hosting@main/image/header.6rjn80v6u3o0.webp">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Jamin</span>
+                        
+                            <span class="author-label">在校学生</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2023-07-21 10:19:00</span>
+        <span class="mobile">2023-07-21 10:19</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/jamin6/categories/AI/">AI</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/jamin6/tags/AI/">AI</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/jamin6/tags/ML/">ML</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/jamin6/tags/%E6%96%B9%E6%B3%95/">方法</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/jamin6/tags/%E5%87%BD%E6%95%B0/">函数</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="机器学习中常用的方法-函数"><a href="#机器学习中常用的方法-函数" class="headerlink" title="机器学习中常用的方法(函数)"></a>机器学习中常用的方法(函数)</h1><p>本篇文章主要编写一些在机器学习中经常使用的方法，以便索引。</p>
+<h2 id="view"><a href="#view" class="headerlink" title="view()"></a>view()</h2><p><code>view()</code> 是 PyTorch 张量（Tensor）的一个方法，用于改变张量的形状而不改变其数据。它类似于 Numpy 的 <code>reshape()</code> 方法。通过调用 <code>view()</code> 方法，可以将一个张量重新变换为另一种形状，但需要满足两个条件：</p>
+<ol>
+<li>变换后的形状与原始形状包含相同数量的元素。</li>
+<li>变换后的形状在各维度上保持相同大小的连续性，即不能跨越内存块。</li>
+</ol>
+<p><code>view()</code> 方法的参数是一个表示目标形状的元组或列表。常用的参数如下：</p>
+<ol>
+<li><strong>-1</strong>：自动推断维度大小。可以在形状中的某个位置使用 -1，PyTorch 会根据其他维度的大小自动计算该位置的大小。</li>
+<li><strong>整数</strong>：指定该维度的大小为给定的整数值。</li>
+<li><strong>0</strong>：保持当前维度不变。可以在形状中的某个位置使用 0，以保持对应维度的大小不变。</li>
+</ol>
+<p>使用方法如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">new_tensor = tensor.view(shape)</span><br></pre></td></tr></table></figure>
+
+<p>其中 <code>tensor</code> 是要进行形状变换的张量，<code>shape</code> 是一个元组或列表，表示变换后的形状。新的张量 <code>new_tensor</code> 将具有指定的形状，并且与原始张量共享相同的数据存储（只是形状视图的不同）。</p>
+<p>以下是一些示例：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">x = torch.randn(<span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>)  <span class="comment"># 创建一个形状为 (4, 3, 2) 的张量</span></span><br><span class="line"><span class="built_in">print</span>(x.size())  <span class="comment"># 输出: torch.Size([4, 3, 2])</span></span><br><span class="line"></span><br><span class="line">y = x.view(<span class="number">12</span>, <span class="number">2</span>)  <span class="comment"># 改变形状为 (12, 2)，相当于展平了前两维</span></span><br><span class="line"><span class="built_in">print</span>(y.size())  <span class="comment"># 输出: torch.Size([12, 2])</span></span><br><span class="line"></span><br><span class="line">z = x.view(-<span class="number">1</span>)  <span class="comment"># 改变形状为一维，自动推断维度</span></span><br><span class="line"><span class="built_in">print</span>(z.size())  <span class="comment"># 输出: torch.Size([24])</span></span><br><span class="line"></span><br><span class="line">w = x.view(<span class="number">6</span>, -<span class="number">1</span>)  <span class="comment"># 改变形状为 (6, -1)，其中 -1 的大小将自动计算为 4</span></span><br><span class="line"><span class="built_in">print</span>(w.size())  <span class="comment"># 输出: torch.Size([6, 4])</span></span><br></pre></td></tr></table></figure>
+
+<p>在使用 <code>view()</code> 进行形状变换时，需要确保变换后的形状是合法的，否则会引发错误。另外，由于 <code>view()</code> 方法返回的是视图（view）而不是新的张量对象，因此对返回的张量进行修改会同时影响原始张量。如果需要得到一个新的张量对象，可以使用 <code>clone()</code> 方法创建一个副本。</p>
+<p>注意：<code>view()</code> 方法并不会改变张量的存储方式，即如果对返回的张量进行修改，可能会影响原始张量。如果需要在内存中重新排列张量的数据，可以使用 <code>reshape()</code> 方法。</p>
+<h2 id="eye"><a href="#eye" class="headerlink" title="eye()"></a>eye()</h2><p><code>该方法在创建独热编码时经常使用。</code></p>
+<p><code>eye()</code> 是 PyTorch 的一个方法，用于创建一个单位矩阵（identity matrix）。单位矩阵是一个方阵，其对角线上的元素全为 1，其他元素全为 0。<code>eye()</code> 方法的作用是创建一个指定大小的单位矩阵。</p>
+<p><code>eye()</code> 方法的参数如下：</p>
+<ul>
+<li><code>n</code>：单位矩阵的行数和列数，即矩阵的大小。</li>
+</ul>
+<p>使用方法如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个形状为 (3, 3) 的单位矩阵</span></span><br><span class="line">x = torch.eye(<span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">复制代码tensor([[1., 0., 0.],</span><br><span class="line">        [0., 1., 0.],</span><br><span class="line">        [0., 0., 1.]])</span><br></pre></td></tr></table></figure>
+
+<p>上述代码中，<code>torch.eye(3)</code> 创建了一个形状为 (3, 3) 的单位矩阵。该张量的对角线上的元素全为 1，其他元素全为 0。</p>
+<p><code>eye()</code> 方法还可以通过设置额外参数来控制单位矩阵的性质，例如：</p>
+<ul>
+<li><code>dtype</code>：指定创建的单位矩阵的数据类型。</li>
+<li><code>device</code>：指定创建的单位矩阵的存储设备。</li>
+</ul>
+<p>以下是一些示例：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个形状为 (4, 4) 的单位矩阵，数据类型为 float32</span></span><br><span class="line">x = torch.eye(<span class="number">4</span>, dtype=torch.float32)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个形状为 (2, 2) 的单位矩阵，在 CUDA 设备上存储</span></span><br><span class="line">y = torch.eye(<span class="number">2</span>, device=<span class="string">&#x27;cuda&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(y)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tensor([[<span class="number">1.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>],</span><br><span class="line">        [<span class="number">0.</span>, <span class="number">1.</span>, <span class="number">0.</span>, <span class="number">0.</span>],</span><br><span class="line">        [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1.</span>, <span class="number">0.</span>],</span><br><span class="line">        [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1.</span>]])</span><br><span class="line">tensor([[<span class="number">1.</span>, <span class="number">0.</span>],</span><br><span class="line">        [<span class="number">0.</span>, <span class="number">1.</span>]], device=<span class="string">&#x27;cuda:0&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>通过指定不同的参数，可以根据需要创建具有不同性质的单位矩阵。</p>
+<h2 id="cat"><a href="#cat" class="headerlink" title="cat()"></a>cat()</h2><p><code>torch.cat()</code> 方法用于按指定维度拼接（连接）多个张量。它将多个输入张量在给定的维度上进行连接，返回一个新的张量。</p>
+<p><code>torch.cat()</code> 方法的参数包括：</p>
+<ul>
+<li><code>tensors</code>：要拼接的张量序列，可以是一个元组、列表或张量的迭代器。</li>
+<li><code>dim</code>：指定在哪个维度上进行拼接操作。</li>
+</ul>
+<p>使用方法如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建两个形状为 (2, 3) 的张量</span></span><br><span class="line">x = torch.tensor([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]])</span><br><span class="line">y = torch.tensor([[<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>], [<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按行拼接（在维度 0 上进行拼接）</span></span><br><span class="line">result = torch.cat((x, y), dim=<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(result)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按列拼接（在维度 1 上进行拼接）</span></span><br><span class="line">result = torch.cat((x, y), dim=<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tensor([[ <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>],</span><br><span class="line">        [ <span class="number">4</span>,  <span class="number">5</span>,  <span class="number">6</span>],</span><br><span class="line">        [ <span class="number">7</span>,  <span class="number">8</span>,  <span class="number">9</span>],</span><br><span class="line">        [<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>]])</span><br><span class="line"></span><br><span class="line">tensor([[ <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>,  <span class="number">7</span>,  <span class="number">8</span>,  <span class="number">9</span>],</span><br><span class="line">        [ <span class="number">4</span>,  <span class="number">5</span>,  <span class="number">6</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>]])</span><br></pre></td></tr></table></figure>
+
+<p>在上述示例中，我们创建了两个形状为 (2, 3) 的张量 x 和 y。然后，我们使用 <code>torch.cat()</code> 方法按不同的维度进行拼接操作。在第一个例子中，我们在维度 0 上进行拼接，即按行拼接，得到了形状为 (4, 3) 的新张量。在第二个例子中，我们在维度 1 上进行拼接，即按列拼接，得到了形状为 (2, 6) 的新张量。</p>
+<p>需要注意的是，<code>torch.cat()</code> 方法要求除了拼接维度之外，其他维度上的大小必须完全一致。否则，将引发错误。另外，<code>dim</code> 参数必须是有效的维度索引，它应该是 0 到 <code>tensors[0].dim()-1</code> 的值之一。</p>
+<p>此外，<code>torch.cat()</code> 方法也支持拼接非张量变量，如 Python 列表或元组。只需将它们作为 <code>tensors</code> 参数传递给 <code>torch.cat()</code> 即可。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建两个形状为 (2, 2) 的列表</span></span><br><span class="line">x = [[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]]</span><br><span class="line">y = [[<span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>]]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拼接列表（在维度 0 上进行拼接）</span></span><br><span class="line">result = torch.cat((x, y), dim=<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tensor([[<span class="number">1</span>, <span class="number">2</span>],</span><br><span class="line">        [<span class="number">3</span>, <span class="number">4</span>],</span><br><span class="line">        [<span class="number">5</span>, <span class="number">6</span>],</span><br><span class="line">        [<span class="number">7</span>, <span class="number">8</span>]])</span><br></pre></td></tr></table></figure>
+
+<p>通过 <code>torch.cat()</code> 方法，我们可以方便地在指定维度上拼接多个张量或变量，以满足不同的数据操作需求。</p>
+<h3 id="dim参数"><a href="#dim参数" class="headerlink" title="dim参数"></a>dim参数</h3><p><code>dim</code> 是 <code>torch.cat()</code> 等方法中的一个参数，用于指定在哪个维度上进行相关操作，这里以cat方法作为参考。</p>
+<p>在张量中，维度表示张量的阶数或轴的数量。例如，对于形状为 (3, 4, 5) 的三维张量，它有 3 个维度，分别是维度 0、维度 1 和维度 2。</p>
+<p>当我们使用 <code>torch.cat()</code> 方法拼接多个张量时，需要指定拼接的维度。这个维度决定了拼接后张量的形状。</p>
+<p>假设我们有两个形状相同的张量 <code>x</code> 和 <code>y</code>，它们的形状为 (m, n)，那么在 <code>torch.cat((x, y), dim=0)</code> 中：</p>
+<ul>
+<li>如果 <code>dim=0</code>，则在维度 0 上进行拼接，沿着行的方向将 <code>x</code> 和 <code>y</code> 连接起来。结果的形状将是 (2m, n)，即行数变为原来的两倍。</li>
+<li>如果 <code>dim=1</code>，则在维度 1 上进行拼接，沿着列的方向将 <code>x</code> 和 <code>y</code> 连接起来。结果的形状将是 (m, 2n)，即列数变为原来的两倍。</li>
+</ul>
+<p>需要注意的是，具体的维度索引值取决于张量的维度数量。对于一个形状为 (m, n, p) 的三维张量：</p>
+<ul>
+<li>如果 <code>dim=0</code>，则在维度 0 上进行拼接，结果的形状将是 (2m, n, p)。</li>
+<li>如果 <code>dim=1</code>，则在维度 1 上进行拼接，结果的形状将是 (m, 2n, p)。</li>
+<li>如果 <code>dim=2</code>，则在维度 2 上进行拼接，结果的形状将是 (m, n, 2p)。</li>
+</ul>
+<p>通过指定不同的 <code>dim</code> 值，我们可以在不同的维度上对张量进行拼接，从而实现灵活的数据操作。</p>
+<h2 id="transforms-Resize"><a href="#transforms-Resize" class="headerlink" title="transforms.Resize()"></a>transforms.Resize()</h2><p><code>transforms.Resize()</code>是PyTorch中的一个图像预处理操作，用于调整图像的大小。它的作用是将输入的图像调整为指定的大小。</p>
+<p>在使用<code>transforms.Resize()</code>时，你可以提供以下参数：</p>
+<ul>
+<li><code>size</code>：它可以是一个整数、一个元组或列表、或者一个数字序列。如果<code>size</code>是一个整数n，图像的最短边将被调整为n像素，并且长宽比将被保持。如果<code>size</code>是一个长度为2的元组<code>(h, w)</code>，图像将被调整为高度h和宽度w。如果<code>size</code>是一个整数列表或数字序列，其中每个整数表示一个要调整的边长，图像将按顺序调整为这些边长。</li>
+</ul>
+<p>下面是<code>transforms.Resize()</code>的使用方法示例：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torchvision.transforms <span class="keyword">as</span> transforms</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="comment"># 图像预处理</span></span><br><span class="line">preprocess = transforms.Compose([</span><br><span class="line">    transforms.Resize((<span class="number">256</span>, <span class="number">256</span>)),  <span class="comment"># 将图像调整为256x256的大小</span></span><br><span class="line">    transforms.ToTensor()   <span class="comment"># 转换为张量</span></span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载并预处理图像</span></span><br><span class="line">image = Image.<span class="built_in">open</span>(<span class="string">&#x27;image.jpg&#x27;</span>)  <span class="comment"># 请将&#x27;image.jpg&#x27;替换成实际的图像文件路径</span></span><br><span class="line">image = preprocess(image)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印调整后的图像大小</span></span><br><span class="line"><span class="built_in">print</span>(image.shape)</span><br></pre></td></tr></table></figure>
+
+<p>在上述示例中，<code>transforms.Resize((256, 256))</code>将图像调整为256x256的大小。然后，通过<code>transforms.ToTensor()</code>将图像转换为张量。最后，打印调整后的图像大小。</p>
+<p>另外，你还可以使用其他参数形式来调整图像的大小，例如<code>transforms.Resize(256)</code>将图像的最短边调整为256像素，并保持长宽比；或者使用<code>transforms.Resize([256, 512])</code>按顺序调整图像的宽度为256像素，高度为512像素。</p>
+<h2 id="transforms-CenterCrop"><a href="#transforms-CenterCrop" class="headerlink" title="transforms.CenterCrop()"></a>transforms.CenterCrop()</h2><p><code>transforms.CenterCrop()</code>是PyTorch中的一个图像预处理操作，用于将图像居中裁剪到指定的大小。它的作用是保留图像的中心部分，并将其调整为指定的大小。</p>
+<p>在使用<code>transforms.CenterCrop()</code>时，你可以提供以下参数：</p>
+<ul>
+<li><code>size</code>：它可以是一个整数或一个元组。如果<code>size</code>是一个整数n，图像将被裁剪为高度和宽度都是n的正方形。如果<code>size</code>是一个长度为2的元组<code>(h, w)</code>，图像将被裁剪为高度h和宽度w的矩形。</li>
+</ul>
+<p>下面是<code>transforms.CenterCrop()</code>的使用方法示例：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torchvision.transforms <span class="keyword">as</span> transforms</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="comment"># 图像预处理</span></span><br><span class="line">preprocess = transforms.Compose([</span><br><span class="line">    transforms.CenterCrop(<span class="number">224</span>),  <span class="comment"># 将图像居中裁剪为224x224的大小</span></span><br><span class="line">    transforms.ToTensor()   <span class="comment"># 转换为张量</span></span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载并预处理图像</span></span><br><span class="line">image = Image.<span class="built_in">open</span>(<span class="string">&#x27;image.jpg&#x27;</span>)  <span class="comment"># 请将&#x27;image.jpg&#x27;替换成实际的图像文件路径</span></span><br><span class="line">image = preprocess(image)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印裁剪后的图像大小</span></span><br><span class="line"><span class="built_in">print</span>(image.shape)</span><br></pre></td></tr></table></figure>
+
+<p>在上述示例中，<code>transforms.CenterCrop(224)</code>将图像居中裁剪为224x224的大小。然后，通过<code>transforms.ToTensor()</code>将图像转换为张量。最后，打印裁剪后的图像大小。</p>
+<h2 id="transforms-Normalize"><a href="#transforms-Normalize" class="headerlink" title="transforms.Normalize()"></a>transforms.Normalize()</h2><p><code>transforms.Normalize()</code>是PyTorch中的一个图像预处理操作，用于对图像进行标准化处理。它的作用是将图像的每个通道的像素值按照给定的均值和标准差进行标准化，以便在模型训练过程中更好地收敛。</p>
+<p>在使用<code>transforms.Normalize()</code>时，你可以提供以下参数：</p>
+<ul>
+<li><code>mean</code>：一个表示均值的元组或列表。长度必须等于图像通道数。该参数用于对图像的每个通道进行均值减法。</li>
+<li><code>std</code>：一个表示标准差的元组或列表。长度必须等于图像通道数。该参数用于对图像的每个通道进行标准差除法。</li>
+</ul>
+<p>下面是<code>transforms.Normalize()</code>的使用方法示例：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torchvision.transforms <span class="keyword">as</span> transforms</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="comment"># 均值和标准差</span></span><br><span class="line">mean = [<span class="number">0.485</span>, <span class="number">0.456</span>, <span class="number">0.406</span>]</span><br><span class="line">std = [<span class="number">0.229</span>, <span class="number">0.224</span>, <span class="number">0.225</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 图像预处理</span></span><br><span class="line">preprocess = transforms.Compose([</span><br><span class="line">    transforms.ToTensor(),   <span class="comment"># 转换为张量</span></span><br><span class="line">    transforms.Normalize(mean, std)  <span class="comment"># 标准化</span></span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载并预处理图像</span></span><br><span class="line">image = Image.<span class="built_in">open</span>(<span class="string">&#x27;image.jpg&#x27;</span>)  <span class="comment"># 请将&#x27;image.jpg&#x27;替换成实际的图像文件路径</span></span><br><span class="line">image = preprocess(image)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印标准化后的图像通道均值和标准差</span></span><br><span class="line"><span class="built_in">print</span>(image.mean(dim=(<span class="number">1</span>, <span class="number">2</span>)))</span><br><span class="line"><span class="built_in">print</span>(image.std(dim=(<span class="number">1</span>, <span class="number">2</span>)))</span><br></pre></td></tr></table></figure>
+
+<p>在上述示例中，<code>transforms.ToTensor()</code>将图像转换为张量。然后，通过<code>transforms.Normalize(mean, std)</code>对图像的每个通道进行标准化，其中<code>mean</code>和<code>std</code>分别表示图像通道的均值和标准差。最后，打印标准化后的图像通道均值和标准差。</p>
+<p>需要注意的是，在使用<code>transforms.Normalize()</code>之前，图像通常应该通过<code>transforms.ToTensor()</code>将其转换为张量。</p>
+<h2 id="torch-unsqueeze"><a href="#torch-unsqueeze" class="headerlink" title="torch.unsqueeze()"></a>torch.unsqueeze()</h2><p><code>torch.unsqueeze()</code>是PyTorch中的一个函数，用于在张量的指定位置增加一个维度。它的作用是将原始张量扩展为更高维度的张量。</p>
+<p>在使用<code>torch.unsqueeze()</code>时，你可以提供以下参数：</p>
+<ul>
+<li><code>input</code>：要进行维度扩展的输入张量。</li>
+<li><code>dim</code>：一个整数，表示在哪个位置插入新的维度。该参数的取值范围是从0到输入张量的维度数。</li>
+</ul>
+<p>下面是<code>torch.unsqueeze()</code>的使用方法示例：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个二维张量</span></span><br><span class="line">x = torch.tensor([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">                  [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用torch.unsqueeze()在第二个维度处增加一个维度</span></span><br><span class="line">x_new0 = torch.unsqueeze(x, dim=<span class="number">0</span>)</span><br><span class="line">x_new1 = torch.unsqueeze(x, dim=<span class="number">1</span>)</span><br><span class="line">x_new2 = torch.unsqueeze(x, dim=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印原始张量和扩展后的张量</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;原始张量：&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;扩展后的张量：&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(x_new0)</span><br><span class="line"><span class="built_in">print</span>(x_new1)</span><br><span class="line"><span class="built_in">print</span>(x_new2)</span><br></pre></td></tr></table></figure>
+
+<p>在上述示例中，我们首先创建了一个二维张量<code>x</code>。然后，使用<code>torch.unsqueeze(x, dim=1)</code>在第二个维度处插入一个新的维度。最后，打印原始张量和扩展后的张量。</p>
+<p>输出结果如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">原始张量：</span><br><span class="line">tensor([[1, 2, 3],</span><br><span class="line">        [4, 5, 6]])</span><br><span class="line">扩展后的张量：</span><br><span class="line">tensor([[[1, 2, 3],</span><br><span class="line">         [4, 5, 6]]])</span><br><span class="line">tensor([[[1, 2, 3]],</span><br><span class="line"></span><br><span class="line">        [[4, 5, 6]]])</span><br><span class="line">tensor([[[1],</span><br><span class="line">         [2],</span><br><span class="line">         [3]],</span><br><span class="line"></span><br><span class="line">        [[4],</span><br><span class="line">         [5],</span><br><span class="line">         [6]]])</span><br></pre></td></tr></table></figure>
+
+<p>在扩展后的张量中，原来的维度1被扩展为了维度2。</p>
+<h2 id="torch-squeeze"><a href="#torch-squeeze" class="headerlink" title="torch.squeeze()"></a>torch.squeeze()</h2><p><code>torch.squeeze()</code>是PyTorch中的一个函数，用于去除张量中维度为1的维度。它的作用是将原始张量中维度为1的维度进行压缩，从而减少张量的维度数。</p>
+<p>在使用<code>torch.squeeze()</code>时，你可以提供以下参数：</p>
+<ul>
+<li><code>input</code>：要进行维度压缩的输入张量。</li>
+<li><code>dim</code>：一个整数或元组，表示要压缩的维度。该参数是可选的。如果指定了<code>dim</code>，则只会在指定的维度处进行压缩，而不是在所有维度为1的维度处进行压缩。</li>
+</ul>
+<p>下面是<code>torch.squeeze()</code>的使用方法示例：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个具有维度为1的额外维度的张量</span></span><br><span class="line">x = torch.randn(<span class="number">1</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用torch.squeeze()压缩张量的维度为1的维度</span></span><br><span class="line">x_new = torch.squeeze(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印原始张量和压缩后的张量</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;原始张量：&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;压缩后的张量：&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(x_new)</span><br></pre></td></tr></table></figure>
+
+<p>在上述示例中，我们首先创建了一个张量<code>x</code>，它具有维度为1的额外维度。然后，使用<code>torch.squeeze(x)</code>压缩张量的维度为1的维度。最后，打印原始张量和压缩后的张量。</p>
+<p>输出结果如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">原始张量：</span><br><span class="line">tensor([[[[ 1.3378, -0.6038, -0.5162, -1.0522, -0.9087]],</span><br><span class="line"></span><br><span class="line">         [[-0.5057, -1.8196, -0.1545, -1.2484,  0.7989]],</span><br><span class="line"></span><br><span class="line">         [[ 1.2472, -0.8905,  1.4315, -1.1237, -0.8593]]]])</span><br><span class="line">压缩后的张量：</span><br><span class="line">tensor([[ 1.3378, -0.6038, -0.5162, -1.0522, -0.9087],</span><br><span class="line">        [-0.5057, -1.8196, -0.1545, -1.2484,  0.7989],</span><br><span class="line">        [ 1.2472, -0.8905,  1.4315, -1.1237, -0.8593]])</span><br></pre></td></tr></table></figure>
+
+<p>在压缩后的张量中，原始张量中维度为1的额外维度被去除，得到一个维度更少的张量。</p>
+<p>需要注意的是，如果要指定压缩的维度，可以将<code>dim</code>参数设置为相应的维度。例如，<code>torch.squeeze(x, dim=1)</code>将只在第二个维度处进行压缩。</p>
+<h2 id="permute"><a href="#permute" class="headerlink" title="permute()"></a>permute()</h2><p><code>permute()</code>函数是PyTorch中用于对张量进行维度重排的方法。它可以使用一个整数列表作为参数来指定新的维度顺序。这个整数列表中的每个元素表示原始张量中的相应维度在新张量中的位置。</p>
+<p><code>permute()</code>函数的参数及其作用如下：</p>
+<ul>
+<li>参数：<code>*dims</code> 或 <code>[dims]</code>，一个整数列表，表示新的维度顺序。</li>
+<li>作用：将张量的维度按照给定的顺序进行重排。</li>
+</ul>
+<p>下面是一个示例，展示了如何使用<code>permute()</code>函数并提供参数来重新排列张量的维度：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个形状为(2, 3, 4)的张量</span></span><br><span class="line">x = torch.randn(<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用permute()函数进行维度重排</span></span><br><span class="line">y = x.permute(<span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印结果</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;x的形状:&quot;</span>, x.shape)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;y的形状:&quot;</span>, y.shape)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Copy Codex的形状: torch.Size([2, 3, 4])</span><br><span class="line">y的形状: torch.Size([3, 2, 4])</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，我们创建了一个形状为<code>(2, 3, 4)</code>的张量<code>x</code>。然后，使用<code>permute(1, 0, 2)</code>对原始张量进行维度重排，将维度1和维度0进行交换，得到新的张量<code>y</code>。最后，打印<code>x</code>和<code>y</code>的形状，可以看到维度顺序发生了改变。</p>
+<p>需要注意的是，<code>permute()</code>函数返回的是一个新的张量，原始张量并没有被修改。此外，参数列表中的每个元素都必须是原始张量维度的有效索引，并且不能有重复的索引。</p>
+<h2 id="scatter"><a href="#scatter" class="headerlink" title="scatter_()"></a>scatter_()</h2><p><code>scatter_()</code>是PyTorch中的一个张量方法，用于按照指定的索引在张量中进行原位散射（in-place scatter）。它可以根据给定的索引和值，在指定位置上更新张量的值。</p>
+<p><code>scatter_()</code>方法的参数及其作用如下：</p>
+<ul>
+<li>参数：<code>dim</code>，表示要进行散射操作的维度。</li>
+<li>参数：<code>index</code>，表示要更新的位置在指定维度上的索引。</li>
+<li>参数：<code>src</code>，表示要填充到指定位置的源数据。</li>
+<li>参数：<code>reduce</code>（可选），表示在指定位置处出现多个源数据时，如何对它们进行合并操作。</li>
+<li>作用：根据给定的索引和值，在指定位置上更新张量的值。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">y = y.scatter(dim,index,src)</span><br><span class="line"> </span><br><span class="line"><span class="comment">#则结果为：</span></span><br><span class="line">y[ index[i][j][k]  ] [j][k] = src[i][j][k] <span class="comment"># if dim == 0</span></span><br><span class="line">y[i] [ index[i][j][k] ] [k] = src[i][j][k] <span class="comment"># if dim == 1</span></span><br><span class="line">y[i][j] [ index[i][j][k] ]  = src[i][j][k] <span class="comment"># if dim == 2</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>下面是一个示例，展示如何使用<code>scatter_()</code>方法来实现原位散射操作：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个形状为(4, 3)的零张量</span></span><br><span class="line">x = torch.zeros(<span class="number">4</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义要更新的索引</span></span><br><span class="line">indices = torch.tensor([[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>],</span><br><span class="line">                        [<span class="number">1</span>, <span class="number">2</span>, <span class="number">0</span>],</span><br><span class="line">                        [<span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">                        [<span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义要填充的源数据</span></span><br><span class="line">values = torch.tensor([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在指定位置上更新张量的值</span></span><br><span class="line">x.scatter_(dim=<span class="number">0</span>, index=indices, src=values)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印结果</span></span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Copy Codetensor([[4, 3, 2],</span><br><span class="line">        [3, 1, 4],</span><br><span class="line">        [2, 4, 3],</span><br><span class="line">        [1, 2, 1]])</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，我们首先创建了一个形状为<code>(4, 3)</code>的零张量<code>x</code>。然后，定义了一个形状为<code>(4, 3)</code>的索引张量<code>indices</code>和一个形状为<code>(4,)</code>的源数据张量<code>values</code>。最后，我们使用<code>scatter_()</code>方法，在指定位置上更新张量<code>x</code>的值。通过设置<code>dim=0</code>，我们在第0维（行）上进行散射操作。</p>
+<p>需要注意的是，<code>scatter_()</code>方法会原地修改张量，因此在方法名称末尾有下划线<code>_</code>。此外，如果在指定的位置上存在多个源数据，要根据具体情况选择如何合并它们，可以使用<code>reduce</code>参数来指定合并操作，默认是求和。</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：机器学习中常用的方法(函数)</li>
+        <li>本文作者：Jamin</li>
+        <li>创建时间：2023-07-21 10:19:00</li>
+        <li>
+            本文链接：https://jamin6.github.io/2023/07/21/机器学习中常用的方法(函数)/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/jamin6/tags/AI/">#AI</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/jamin6/tags/ML/">#ML</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/jamin6/tags/%E6%96%B9%E6%B3%95/">#方法</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/jamin6/tags/%E5%87%BD%E6%95%B0/">#函数</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/jamin6/2023/11/02/%E6%9D%A1%E4%BB%B6%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C(CGAN)/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item"></span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/jamin6/2023/07/11/GAN%E5%8E%9F%E7%90%86%E7%B2%BE%E8%AE%B2%E4%B8%8E%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">GAN原理精讲与代码实战</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'aDovJfU0RQy3TJemE3IuhzKs-gzGzoHsz',
+                    appKey: 'QUwMEPNfLi8k1CnCV4Jj2pz5',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '😜 尽情吐槽吧~',
+                    lang: 'zh-CN'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Jamin';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Jamin</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95-%E5%87%BD%E6%95%B0"><span class="nav-text">机器学习中常用的方法(函数)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#view"><span class="nav-text">view()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eye"><span class="nav-text">eye()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cat"><span class="nav-text">cat()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dim%E5%8F%82%E6%95%B0"><span class="nav-text">dim参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transforms-Resize"><span class="nav-text">transforms.Resize()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transforms-CenterCrop"><span class="nav-text">transforms.CenterCrop()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transforms-Normalize"><span class="nav-text">transforms.Normalize()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#torch-unsqueeze"><span class="nav-text">torch.unsqueeze()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#torch-squeeze"><span class="nav-text">torch.squeeze()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#permute"><span class="nav-text">permute()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scatter"><span class="nav-text">scatter_()</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

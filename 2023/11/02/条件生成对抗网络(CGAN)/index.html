@@ -9,8 +9,6 @@
     
     <title>
         
-            归档 |
-        
         Jamin&#39;s Blog
     </title>
     
@@ -72,7 +70,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/jamin6/archives"
                             >
                                 归档
@@ -130,7 +128,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/jamin6/archives">归档</a>
                 </li>
             
@@ -165,52 +163,185 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="archive-container ">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation"></span>
+        </div>
+
         
-<div class="archive-list-container">
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://cdn.jsdelivr.net/gh/Jamin6/image-hosting@main/image/header.6rjn80v6u3o0.webp">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Jamin</span>
+                        
+                            <span class="author-label">在校学生</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2023-11-02 16:19:53</span>
+        <span class="mobile">2023-11-02 16:19</span>
+    </span>
     
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2023</span>
-                <span class="archive-year-post-count">[4]</span>
-            </div>
-            <ul class="article-list">
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/jamin6/2023/11/02/%E6%9D%A1%E4%BB%B6%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C(CGAN)/"
-                        ></a>
-                        <span class="article-date">11-02</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/jamin6/2023/07/21/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95(%E5%87%BD%E6%95%B0)/"
-                        >机器学习中常用的方法(函数)</a>
-                        <span class="article-date">07-21</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/jamin6/2023/07/11/GAN%E5%8E%9F%E7%90%86%E7%B2%BE%E8%AE%B2%E4%B8%8E%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98/"
-                        >GAN原理精讲与代码实战</a>
-                        <span class="article-date">07-11</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/jamin6/2023/07/10/Hexo%E4%B8%8A%E4%BC%A0%E6%95%99%E7%A8%8B/"
-                        >Hexo上传教程</a>
-                        <span class="article-date">07-10</span>
-                    </li>
-                
-            </ul>
-        </section>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
     
 </div>
 
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="条件生成对抗网络-CGAN"><a href="#条件生成对抗网络-CGAN" class="headerlink" title="条件生成对抗网络(CGAN)"></a>条件生成对抗网络(CGAN)</h1><h1 id="一、CGAN"><a href="#一、CGAN" class="headerlink" title="一、CGAN"></a>一、CGAN</h1><h2 id="1、什么是CGAN"><a href="#1、什么是CGAN" class="headerlink" title="1、什么是CGAN"></a>1、什么是CGAN</h2><p>条件生成对抗网络（Conditional Generative Adversarial Nets），为GANdd的改进版本。通过为数据增加label (y)进行构造，在G和D的输入上都增加了label。然后做了两个有条件的GAN的实验。也就是给定条件y,结合随机分布，生成符合条件y的样本。</p>
+<h2 id="2、原始GAN存在的问题"><a href="#2、原始GAN存在的问题" class="headerlink" title="2、原始GAN存在的问题"></a>2、原始GAN存在的问题</h2><p>①、之前介绍的无条件的GAN中，生成的数据是不可控的，代码运行结果也可以看出，只能生成0-9的数字，但无法保证是哪一个。但是本文给定标签的CGAN网络，可以基于class label生成特定数字的图像。</p>
+<p>②、对于one-to-many mapping模型，比如image tag问题，一张图像可能不止一个tag,传统模型无法解决，因此可以使用条件生成概率，将输入图像视为conditional variable(条件变量)，使用条件预测分布去获取一对多的映射关系。</p>
+<h2 id="3、CGAN的应用"><a href="#3、CGAN的应用" class="headerlink" title="3、CGAN的应用"></a>3、CGAN的应用</h2><p>CGAN可以应用于图像修补，多模态深度学习等任务当中。目前在这些领域也已经有很深入的应用。</p>
+<h2 id="4、CGAN流程图"><a href="#4、CGAN流程图" class="headerlink" title="4、CGAN流程图"></a>4、CGAN流程图</h2><p><img src="../../../../../Tools/Typora/images/image-20230714154956447.png" alt="image-20230714154956447"></p>
+<h2 id="5、目标函数"><a href="#5、目标函数" class="headerlink" title="5、目标函数"></a>5、目标函数</h2><p><img src="../../../../../Tools/Typora/images/image-20230714155155176.png" alt="image-20230714155155176"></p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：</li>
+        <li>本文作者：Jamin</li>
+        <li>创建时间：2023-11-02 16:19:53</li>
+        <li>
+            本文链接：https://jamin6.github.io/2023/11/02/条件生成对抗网络(CGAN)/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/jamin6/2023/07/21/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95(%E5%87%BD%E6%95%B0)/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">机器学习中常用的方法(函数)</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'aDovJfU0RQy3TJemE3IuhzKs-gzGzoHsz',
+                    appKey: 'QUwMEPNfLi8k1CnCV4Jj2pz5',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '😜 尽情吐槽吧~',
+                    lang: 'zh-CN'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Jamin';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
     </div>
 </div>
+
 
                 
             </div>
@@ -254,6 +385,27 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-bottom-side-tools">
@@ -300,6 +452,14 @@
 
     </div>
 
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C-CGAN"><span class="nav-text">条件生成对抗网络(CGAN)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81CGAN"><span class="nav-text">一、CGAN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AFCGAN"><span class="nav-text">1、什么是CGAN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E5%8E%9F%E5%A7%8BGAN%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">2、原始GAN存在的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81CGAN%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-text">3、CGAN的应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81CGAN%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-text">4、CGAN流程图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E3%80%81%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0"><span class="nav-text">5、目标函数</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
     
 
     <div class="image-viewer-container">
@@ -355,6 +515,8 @@
 
 
 <div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
     
 </div>
 
