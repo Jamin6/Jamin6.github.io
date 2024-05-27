@@ -4,6 +4,43 @@
   
     
     <entry>
+      <title>babyupload</title>
+      <link href="/Jamin6.github.io/2024/05/27/%E6%96%87%E7%AB%A0%E5%A4%B4%E6%A8%A1%E6%9D%BF--CTF/"/>
+      <url>/Jamin6.github.io/2024/05/27/%E6%96%87%E7%AB%A0%E5%A4%B4%E6%A8%A1%E6%9D%BF--CTF/</url>
+      
+        <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>题目：[NISACTF 2022]babyupload</p><p>链接：<a class="link"   href="https://www.nssctf.cn/problem/2025" >https://www.nssctf.cn/problem/2025<i class="fas fa-external-link-alt"></i></a></p><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p><code> 解题大致思路</code></p><p>1、进入页面，页面首页就一个文件上传功能，考虑文件上传漏洞，首页信息不对，尝试查看源码</p><p>2、</p><h1 id="EXP"><a href="#EXP" class="headerlink" title="EXP"></a>EXP</h1><p><code>具体攻击代码</code></p><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><code>总结内容</code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网络安全 </category>
+          
+          <category> Web安全 </category>
+          
+          <category> 文件上传 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 文件上传 </tag>
+            
+            <tag> 代码审查 </tag>
+            
+            <tag> 代码特性 </tag>
+            
+            <tag> Flask </tag>
+            
+            <tag> os.path.join() </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title></title>
       <link href="/Jamin6.github.io/2023/11/02/%E6%9D%A1%E4%BB%B6%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C(CGAN)/"/>
       <url>/Jamin6.github.io/2023/11/02/%E6%9D%A1%E4%BB%B6%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C(CGAN)/</url>
